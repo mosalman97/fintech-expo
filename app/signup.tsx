@@ -61,7 +61,7 @@ const Page = () => {
 					style={[
 						defaultStyles.pillButton,
 						mobileNumber !== "" ? styles.enabled : styles.disabled,
-						{ marginTop: 20 },
+						{ marginBottom: 20 },
 					]}
 				>
 					<Text style={defaultStyles.buttonText}>Sign Up</Text>
