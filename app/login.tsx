@@ -12,13 +12,21 @@ import {
 import { Link } from "expo-router";
 import { defaultStyles } from "@/constants/Styles";
 import Colors from "@/constants/Colors";
+import Ionicons from "@expo/vector-icons/Ionicons";
+
+enum SignInType {
+	Phone,
+	Email,
+	Google,
+	Apple,
+}
 
 const Page = () => {
 	const [countryCode, setCountryCode] = useState("+971");
 	const [mobileNumber, setMobileNumber] = useState("");
 	const keyboardVerticalOffset = Platform.OS === "ios" ? 80 : 0;
 
-	const onSignIn = async () => {};
+	const onSignIn = async (type: SignInType) => {};
 	return (
 		<KeyboardAvoidingView
 			style={{ flex: 1 }}
@@ -49,7 +57,7 @@ const Page = () => {
 					/>
 				</View>
 				<TouchableOpacity
-					onPress={onSignIn}
+					onPress={() => onSignIn(SignInType.Phone)}
 					style={[
 						defaultStyles.pillButton,
 						mobileNumber !== "" ? styles.enabled : styles.disabled,
@@ -64,7 +72,57 @@ const Page = () => {
 						alignItems: "center",
 						gap: 16,
 					}}
-				></View>
+				>
+					<View
+						style={{
+							flex: 1,
+							height: StyleSheet.hairlineWidth,
+							backgroundColor: Colors.gray,
+						}}
+					></View>
+					<Text style={{ color: Colors.gray, fontSize: 20 }}>or</Text>
+					<View
+						style={{
+							flex: 1,
+							height: StyleSheet.hairlineWidth,
+							backgroundColor: Colors.gray,
+						}}
+					></View>
+				</View>
+				<TouchableOpacity
+					onPress={() => onSignIn(SignInType.Email)}
+					style={[
+						defaultStyles.pillButton,
+						{
+							flexDirection: "row",
+							gap: 16,
+							marginTop: 20,
+							backgroundColor: "#ffff",
+						},
+					]}
+				>
+					<Ionicons name="mail" size={24} color={"#000"} />
+					<Text style={[defaultStyles.buttonText, { color: "#000" }]}>
+						Continue with Email
+					</Text>
+				</TouchableOpacity>
+				<TouchableOpacity
+					onPress={() => onSignIn(SignInType.Email)}
+					style={[
+						defaultStyles.pillButton,
+						{
+							flexDirection: "row",
+							gap: 16,
+							marginTop: 20,
+							backgroundColor: "#ffff",
+						},
+					]}
+				>
+					<Ionicons name="logo-google" size={24} color={"#000"} />
+					<Text style={[defaultStyles.buttonText, { color: "#000" }]}>
+						Continue with Email
+					</Text>
+				</TouchableOpacity>
 			</View>
 		</KeyboardAvoidingView>
 	);
