@@ -107,7 +107,7 @@ const Page = () => {
 					</Text>
 				</TouchableOpacity>
 				<TouchableOpacity
-					onPress={() => onSignIn(SignInType.Email)}
+					onPress={() => onSignIn(SignInType.Google)}
 					style={[
 						defaultStyles.pillButton,
 						{
@@ -120,7 +120,24 @@ const Page = () => {
 				>
 					<Ionicons name="logo-google" size={24} color={"#000"} />
 					<Text style={[defaultStyles.buttonText, { color: "#000" }]}>
-						Continue with Email
+						Continue with Google
+					</Text>
+				</TouchableOpacity>
+				<TouchableOpacity
+					onPress={() => onSignIn(SignInType.Google)}
+					style={[
+						defaultStyles.pillButton,
+						{
+							flexDirection: "row",
+							gap: 16,
+							marginTop: 20,
+							backgroundColor: "#ffff",
+						},
+					]}
+				>
+					<Ionicons name="logo-apple" size={24} color={"#000"} />
+					<Text style={[defaultStyles.buttonText, { color: "#000" }]}>
+						Continue with Apple
 					</Text>
 				</TouchableOpacity>
 			</View>
